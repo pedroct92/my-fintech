@@ -1,6 +1,11 @@
-# Bmoat
+# My-fintech
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.1.
+Series of financial online services
+
+## Live Demo
+Live demo running [here](https://sharp-borg-498eb1.netlify.app).
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d4fc9b4f-c6fa-4e94-8138-f5a52d5dc489/deploy-status)](https://app.netlify.com/sites/sharp-borg-498eb1/deploys)
 
 ## Development server
 

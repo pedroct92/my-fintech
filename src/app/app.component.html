@@ -1,9 +1,9 @@
-<p>hey yo</p>
-
-<p> Results: </p>
-
-<p *ngIf="body">
-  {{ body | json }}
-</p>
-
-<router-outlet></router-outlet>
+<mat-toolbar color="primary" class="header">
+    <img src="assets/img/logo.png" width="150px" height="55px" alt="MyFintech logo">
+</mat-toolbar>
+<div class="content">
+    <router-outlet></router-outlet>
+</div>
+<mat-toolbar color="primary" class="footer">
+    <p style="text-align: center; align-content: center;">&#169; MyFintech  - {{ currentYear }} </p>
+</mat-toolbar>

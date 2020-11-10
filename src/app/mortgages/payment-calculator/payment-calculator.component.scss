@@ -1,0 +1,26 @@
+.header {
+  padding: 10px 2% 0 2%;
+
+  .logo {
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.container {
+  width: 96%;
+  padding: 0 2%;
+
+  app-payment-plan {
+    margin-bottom: 16px;
+  }
+
+  app-payment-summary {
+    margin-bottom: 16px;
+  }
+
+  .home-calculator {
+    max-height: 310px;
+  }
+}

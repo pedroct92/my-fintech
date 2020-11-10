@@ -1,10 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './core/MaterialModule';
+import { CurrencyPipe } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialCommonsModule } from '@my-fintech/commons/material-commons.module';
+import { MortgagesModule } from '@my-fintech/mortgages/mortgages.module';
+import { AppRoutingModule } from '@my-fintech/app-routing.module';
+import { AppComponent } from '@my-fintech/app.component';
+import { SharedModule } from '@my-fintech/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -12,11 +15,16 @@ import { MaterialModule } from './core/MaterialModule';
   ],
   imports: [
     BrowserModule,
-    MaterialModule,
+    FlexLayoutModule,
+    MaterialCommonsModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule,
+    MortgagesModule
   ],
-  providers: [],
+  providers: [
+      CurrencyPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
