@@ -48,8 +48,7 @@
                     <mat-hint align="start">The number of years for the term</mat-hint>
                 </mat-form-field>
             </div>
-            <div fxLayout="row" fxFlexFill fxLayoutAlign="end end" fxLayoutAlign.lt-sm="" fxLayout.lt-sm="column"
-                 fxLayoutGap="16px">
+            <div fxLayout="row" fxFlexFill fxLayoutAlign="end end" fxLayoutAlign.lt-sm="" fxLayout.lt-sm="column" fxLayoutGap="16px" class="actions">
                 <button mat-raised-button color="warn" type="button" (click)="onReset()">Reset</button>
                 <button mat-raised-button color="accent" [disabled]="!paymentPlanForm.valid">Calculate</button>
             </div>
