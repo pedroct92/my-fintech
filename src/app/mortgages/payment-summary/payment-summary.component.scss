@@ -1,7 +1,33 @@
 table {
+  border-collapse: collapse;
+  table-layout: fixed;
   width: 100%;
 
-  th {
+  th, td {
     text-align: left;
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  th {
+    background-color: var(--primary-lighter-color);
+  }
+
+  tr:hover {
+    background-color: #ddd;
+  }
+}
+
+.payment-amount {
+  margin-top: 16px;
+  padding: 10px;
+  border-bottom: 1px solid var(--primary-lighter-color);
+  text-align: center;
+
+  .logo {
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
+    margin-right: 16px;
   }
 }

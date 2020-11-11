@@ -3,22 +3,43 @@
         <mat-card-title>Your Mortgage Details</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <table>
-            <tr>
-                <th>Company</th>
-                <th>Contact</th>
-                <th>Country</th>
-            </tr>
-            <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
-            </tr>
-            <tr>
-                <td>Centro comercial Moctezuma</td>
-                <td>Francisco Chang</td>
-                <td>Mexico</td>
-            </tr>
-        </table>
+        <div fxLayout="row" fxFlexFill fxLayout.lt-sm="column" fxLayoutGap="16px">
+            <div fxFlex="33.5" fxLayoutAlign="center center" fxFlexFill fxLayout.lt-sm="column" fxLayoutGap="16px">
+                <div class="payment-amount">
+                    <img src="assets/img/dollar-hand.svg" class="logo" alt="Mortgages Payment Calculator">
+                    <span class="headline"> $500 / month </span>
+                </div>
+            </div>
+            <div fxFlex="66.5" fxLayout="column" fxFlexFill fxLayout.lt-sm="column" fxLayoutGap="16px">
+                <table>
+                    <tr>
+                        <th>Number of Payments</th>
+                        <th>Principal Payments</th>
+                        <th>Interest Payments</th>
+                        <th>Total Cost</th>
+                    </tr>
+                    <tr>
+                        <td>60</td>
+                        <td>$30.000.00</td>
+                        <td>$20.000.00</td>
+                        <td>$50.000.00</td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th>Number of Payments</th>
+                        <th>Principal Payments</th>
+                        <th>Interest Payments</th>
+                        <th>Total Cost</th>
+                    </tr>
+                    <tr>
+                        <td>300</td>
+                        <td>$130.000.00</td>
+                        <td>$70.000.00</td>
+                        <td>$200.000.00</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </mat-card-content>
 </mat-card>
