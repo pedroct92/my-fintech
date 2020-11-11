@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { PaymentCalculatorService } from '@my-fintech/mortgages/payment-calculator/payment-calculator.service';
-import { SelectOption } from '@my-fintech/commons/commons.models';
+import { Observable } from 'rxjs';
+import { PaymentPlan } from '@my-fintech/mortgages/mortgages.models';
 
 @Component({
   selector: 'app-payment-calculator',
@@ -10,19 +11,21 @@ import { SelectOption } from '@my-fintech/commons/commons.models';
 })
 export class PaymentCalculatorComponent implements OnInit {
 
-  years: Array<SelectOption>;
-  months: Array<SelectOption>;
-  termYears: Array<SelectOption>;
-  frequency: Array<SelectOption>;
+  result$: Observable<any>; // TODO def type
 
   constructor(
-      private paymentCalculatorService: PaymentCalculatorService
+      private calculatorService: PaymentCalculatorService
   ){}
 
   ngOnInit(): void {
-    this.years = this.paymentCalculatorService.years;
-    this.months = this.paymentCalculatorService.months;
-    this.termYears = this.paymentCalculatorService.termYears;
-    this.frequency = this.paymentCalculatorService.frequency;
+    this.result$ = this.calculatorService.result$;
+  }
+
+  onPaymentPlanChange(paymentPlan: PaymentPlan): void {
+    this.calculatorService.calc(paymentPlan);
+  }
+
+  onPaymentPlanReset(): void {
+    this.calculatorService.clear();
   }
 }

@@ -1,47 +1,23 @@
 import { Injectable } from '@angular/core';
-import { SelectOption } from '@my-fintech/commons/commons.models';
-import { makeNumberRange } from '@my-fintech/commons/commons.utils';
-import { PaymentFrequency } from '@my-fintech/mortgages/mortgages.models';
+import { Observable, Subject } from 'rxjs';
+import { PaymentPlan } from '@my-fintech/mortgages/mortgages.models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PaymentCalculatorService {
 
-  get years(): Array<SelectOption> {
-    return makeNumberRange(30).map(i => {
-      return {
-        label: i === 0 ? '1 year' : `${i + 1} years`,
-        value: i + 1
-      };
-    });
+  private paymentPlanResult$ = new Subject<any>();
+
+  calc(paymentPlan: PaymentPlan): void {
+    this.paymentPlanResult$.next(paymentPlan);
   }
 
-  get months(): Array<SelectOption> {
-    return makeNumberRange(12).map(i => {
-      return {
-        label: i === 0 ? '' : i === 1 ? '1 month' : `${i} months`,
-        value: i
-      };
-    });
+  clear(): void {
+    this.paymentPlanResult$.next(undefined);
   }
 
-  get termYears(): Array<SelectOption> {
-    return makeNumberRange(10).map(i => {
-      return {
-        label: i === 0 ? '1 year' : `${i + 1} years`,
-        value: i + 1
-      };
-    });
-  }
-
-  get frequency(): Array<SelectOption> {
-    console.log(Object.keys(PaymentFrequency).find(k => k === 'MONTHLY'));
-    return Object.keys(PaymentFrequency).map(frequency => {
-      return {
-        label: PaymentFrequency[frequency],
-        value: frequency
-      };
-    });
+  get result$(): Observable<any> {
+    return this.paymentPlanResult$.asObservable();
   }
 }
