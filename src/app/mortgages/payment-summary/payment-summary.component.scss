@@ -10,7 +10,8 @@ table {
   }
 
   th {
-    background-color: var(--primary-lighter-color);
+    background-color: var(--primary-color);
+    color: var(--text-primary-color);
   }
 
   tr:hover {
