@@ -1,17 +1,27 @@
+$table-border-color: #ddd;
+
 table {
   border-collapse: collapse;
   table-layout: fixed;
   width: 100%;
+  overflow-x: scroll;
+
+  caption {
+    text-align: center;
+    padding: 8px;
+    border: 1px solid $table-border-color;
+  }
 
   th, td {
     text-align: left;
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid $table-border-color;
+    padding: 5px;
   }
 
-  th {
+  th, caption {
     background-color: var(--primary-color);
     color: var(--text-primary-color);
+    font-weight: bold;
   }
 
   tr:hover {

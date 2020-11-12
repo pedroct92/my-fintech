@@ -11,35 +11,33 @@
                 </div>
             </div>
             <div fxFlex="66.5" fxLayout="column" fxFlexFill fxLayout.lt-sm="column" fxLayoutGap="16px">
-                <table>
-                    <tr>
-                        <th>Number of Payments</th>
-                        <th>Principal Payments</th>
-                        <th>Interest Payments</th>
-                        <th>Total Cost</th>
-                    </tr>
-                    <tr>
-                        <td>{{ summary.firstTerm.numPayments }}</td>
-                        <td>{{ summary.firstTerm.paidPrincipal | currency:'CAD' }}</td>
-                        <td>{{ summary.firstTerm.paidInterest | currency:'CAD' }}</td>
-                        <td>{{ summary.firstTerm.paidInTotal | currency:'CAD' }}</td>
-                    </tr>
-                </table>
-                <table>
-                    <tr>
-                        <th>Number of Payments</th>
-                        <th>Principal Payments</th>
-                        <th>Interest Payments</th>
-                        <th>Total Cost</th>
-                    </tr>
-                    <tr>
-                        <td>{{ summary.allTerms.numPayments }}</td>
-                        <td>{{ summary.allTerms.paidPrincipal | currency:'CAD' }}</td>
-                        <td>{{ summary.allTerms.paidInterest | currency:'CAD' }}</td>
-                        <td>{{ summary.allTerms.paidInTotal | currency:'CAD' }}</td>
-                    </tr>
-                </table>
+                <ng-template
+                    [ngTemplateOutlet]="mortgageSection"
+                    [ngTemplateOutletContext]="{ caption: 'Term', section: summary.firstTerm }">
+                </ng-template>
+                <ng-template
+                    [ngTemplateOutlet]="mortgageSection"
+                    [ngTemplateOutletContext]="{ caption: 'Amortization Period', section: summary.allTerms }">
+                </ng-template>
             </div>
         </div>
     </mat-card-content>
 </mat-card>
+
+<ng-template #mortgageSection let-caption="caption" let-section="section">
+    <table>
+        <caption>{{ caption }}</caption>
+        <tr>
+            <th>Number of Payments</th>
+            <th>Principal Payments</th>
+            <th>Interest Payments</th>
+            <th>Total Cost</th>
+        </tr>
+        <tr>
+            <td>{{ section.numPayments }}</td>
+            <td>{{ section.paidPrincipal | currency:'CAD' }}</td>
+            <td>{{ section.paidInterest | currency:'CAD' }}</td>
+            <td>{{ section.paidInTotal | currency:'CAD' }}</td>
+        </tr>
+    </table>
+</ng-template>
