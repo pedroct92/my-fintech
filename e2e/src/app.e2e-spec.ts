@@ -8,9 +8,14 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display mortgages calculator page', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('bmoat app is running!');
+    expect(page.appHeaderIsPresent()).toBeTruthy();
+    expect(page.mortgageCalculatorLabel()).toEqual('Mortgages Payment Calculator');
+    expect(page.paymentPlanTitle()).toEqual('Payment Plan');
+    expect(page.mortgagesSummaryTitle()).toEqual('Your Mortgage Details');
+    expect(page.mortgagesSectionsCount()).toEqual(2);
+    expect(page.appFooterIsPresent()).toBeTruthy();
   });
 
   afterEach(async () => {
