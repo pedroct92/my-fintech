@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PaymentSummaryComponent } from './payment-summary.component';
+import { MortgagesModule } from '@my-fintech/mortgages/mortgages.module';
+import { MortgageSummary } from '@my-fintech/mortgages/mortgages.models';
 
 describe('PaymentSummaryComponent', () => {
   let component: PaymentSummaryComponent;
@@ -7,14 +9,14 @@ describe('PaymentSummaryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PaymentSummaryComponent ]
-    })
-    .compileComponents();
+      imports: [MortgagesModule]
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PaymentSummaryComponent);
     component = fixture.componentInstance;
+    component.summary = { firstTerm: {}, allTerms: {} } as MortgageSummary;
     fixture.detectChanges();
   });
 

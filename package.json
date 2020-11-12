@@ -5,9 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod --base-href /",
+    "build:ci": "npm run test:ci && npm run build",
     "test": "ng test",
+    "test:ci": "ng test --watch=false --browsers ChromeHeadless",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e --port 43000"
   },
   "private": true,
   "dependencies": {

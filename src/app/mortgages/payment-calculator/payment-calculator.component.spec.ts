@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PaymentCalculatorComponent } from './payment-calculator.component';
+import { MortgagesModule } from '@my-fintech/mortgages/mortgages.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('PaymentCalculatorComponent', () => {
   let component: PaymentCalculatorComponent;
@@ -7,9 +9,8 @@ describe('PaymentCalculatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PaymentCalculatorComponent ]
-    })
-    .compileComponents();
+      imports: [NoopAnimationsModule, MortgagesModule]
+    }).compileComponents();
   });
 
   beforeEach(() => {
