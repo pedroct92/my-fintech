@@ -68,10 +68,12 @@ export function getFrequencyLabel(frequency: PaymentFrequency): string {
 * */
 export function numberOfPaymentsPerYear(frequency: PaymentFrequency): number {
   switch (frequency) {
-    case 'WEEKLY' || 'ACCELERATED_WEEKLY': return 52;
-    case 'BI_WEEKLY' || 'ACCELERATED_BI_WEEKLY': return 26;
+    case 'WEEKLY':
+    case 'ACCELERATED_WEEKLY': return 52;
+    case 'BI_WEEKLY':
+    case 'ACCELERATED_BI_WEEKLY': return 26;
     case 'SEMI_MONTHLY': return 24;
     case 'MONTHLY': return 12;
-    default: throw new Error('Unsupported PaymentFrequency');
+    default: throw new Error(`Unsupported PaymentFrequency: ${frequency}`);
   }
 }
