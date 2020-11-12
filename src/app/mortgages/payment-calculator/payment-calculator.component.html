@@ -1,8 +1,8 @@
-<h1 class="header">
+<h1 class="header" [ngClass.lt-sm]="'mobile-header'">
     <img src="assets/img/icon-calc.svg" class="logo" alt="Mortgages Payment Calculator">
     <span>Mortgages Payment Calculator</span>
 </h1>
-<div class="container">
+<div class="container" [ngClass.lt-sm]="'mobile-container'">
     <div fxLayout="row" fxFlexFill fxLayout.lt-sm="column" fxLayoutGap="16px">
         <img fxFlex="33.5" fxHide.lt-sm src="assets/img/house.jpeg" class="home-calculator" alt="House with keys">
         <app-payment-plan fxFlex="66.5"
