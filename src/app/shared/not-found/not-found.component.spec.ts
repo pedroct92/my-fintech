@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NotFoundComponent } from './not-found.component';
 import { DebugElement } from '@angular/core';
-import { SharedModule } from '@my-fintech/shared/shared.module';
+import { SharedModule } from '../shared.module';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';

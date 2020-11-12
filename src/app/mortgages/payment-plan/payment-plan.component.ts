@@ -7,7 +7,7 @@ import {
   PaymentFrequency,
   PaymentPlan,
   SelectOption
-} from '@my-fintech/mortgages/mortgages.models';
+} from '../mortgages.models';
 import { IAbstractControl } from '@rxweb/types/reactive-form/i-abstract-control';
 
 @Component({

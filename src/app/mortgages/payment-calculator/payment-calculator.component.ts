@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { calcMortgageSummary } from '@my-fintech/mortgages/payment-calculator/payment-calculator';
-import { MortgageSummary, PaymentPlan } from '@my-fintech/mortgages/mortgages.models';
-import { enterLeaveAnimation } from '@my-fintech/commons/animations';
+import { calcMortgageSummary } from './payment-calculator';
+import { MortgageSummary, PaymentPlan } from '../mortgages.models';
+import { enterLeaveAnimation } from '../../commons/animations';
 
 @Component({
   selector: 'app-payment-calculator',

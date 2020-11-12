@@ -1,4 +1,4 @@
-import { makeNumberRange } from '@my-fintech/commons/commons.utils';
+import { makeNumberRange } from './commons.utils';
 
 describe('Utils tests', () => {
     it('should return filled array with its index position', () => {

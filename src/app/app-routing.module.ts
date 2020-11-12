@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PaymentCalculatorComponent } from './mortgages/payment-calculator/payment-calculator.component';
-import { NotFoundComponent } from '@my-fintech/shared/not-found/not-found.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'mortgages-calculator', component: PaymentCalculatorComponent },

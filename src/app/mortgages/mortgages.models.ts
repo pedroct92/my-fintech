@@ -1,4 +1,4 @@
-import { makeNumberRange } from '@my-fintech/commons/commons.utils';
+import { makeNumberRange } from '../commons/commons.utils';
 
 export interface SelectOption<T> {
   label: string;

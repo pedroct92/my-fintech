@@ -3,7 +3,7 @@ import {
   MortgageSummary,
   numberOfPaymentsPerYear,
   PaymentPlan
-} from '@my-fintech/mortgages/mortgages.models';
+} from '../mortgages.models';
 
 function calcPayment(principal: number, interest: number, numPayments: number): number {
   return principal * interest / (1 - (Math.pow(1 + interest, -numPayments)));

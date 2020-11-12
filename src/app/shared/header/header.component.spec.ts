@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeaderComponent } from './header.component';
-import { SharedModule } from '@my-fintech/shared/shared.module';
+import { SharedModule } from '../shared.module';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 

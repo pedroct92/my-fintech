@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PaymentSummaryComponent } from './payment-summary.component';
-import { MortgagesModule } from '@my-fintech/mortgages/mortgages.module';
-import { MortgageSummary } from '@my-fintech/mortgages/mortgages.models';
+import { MortgagesModule } from '../mortgages.module';
+import { MortgageSummary } from '../mortgages.models';
 
 describe('PaymentSummaryComponent', () => {
   let component: PaymentSummaryComponent;

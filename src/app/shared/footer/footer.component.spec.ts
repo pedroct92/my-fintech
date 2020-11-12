@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FooterComponent } from './footer.component';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { SharedModule } from '@my-fintech/shared/shared.module';
+import { SharedModule } from '../shared.module';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;

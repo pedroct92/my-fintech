@@ -1,5 +1,5 @@
 import { calcMortgageSummary } from './payment-calculator';
-import { MortgageSection, MortgageSummary, PaymentPlan } from '@my-fintech/mortgages/mortgages.models';
+import { MortgageSection, MortgageSummary, PaymentPlan } from '../mortgages.models';
 import {
   basePaymentPlan,
   expected3yrsTerm,
@@ -7,7 +7,7 @@ import {
   expectedBiWeekly,
   expectedMonthly,
   expectedWeekly
-} from '@my-fintech/mortgages/payment-calculator/payment-calculator.mocks';
+} from './payment-calculator.mocks';
 
 describe('Payment Calculator tests', () => {
   [

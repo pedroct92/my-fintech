@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PaymentPlanComponent } from './payment-plan.component';
-import { MortgagesModule } from '@my-fintech/mortgages/mortgages.module';
+import { MortgagesModule } from '../mortgages.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMaskModule } from 'ngx-mask';
 

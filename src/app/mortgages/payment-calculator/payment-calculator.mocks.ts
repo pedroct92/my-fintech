@@ -1,4 +1,4 @@
-import { MortgageSummary, PaymentPlan } from '@my-fintech/mortgages/mortgages.models';
+import { MortgageSummary, PaymentPlan } from '../mortgages.models';
 
 export function basePaymentPlan(plan: PaymentPlan): PaymentPlan {
     const base = { principal: 100000, rate: 5, amortizationYears: 25, frequency: 'MONTHLY', termYears: 5 };
