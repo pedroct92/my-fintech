@@ -7,7 +7,7 @@
             <div fxLayout="row" fxFlexFill fxLayout.lt-sm="column" fxLayoutGap="16px">
                 <mat-form-field fxFlex="50" appearance="standard">
                     <mat-label>Amount</mat-label>
-                    <input matInput type="number" formControlName="amount">
+                    <input matInput type="number" formControlName="principal">
                     <span matPrefix>$&nbsp;</span>
                 </mat-form-field>
                 <mat-form-field fxFlex="50" appearance="standard">
@@ -20,14 +20,14 @@
             <div fxLayout="row" fxFlexFill fxLayout.lt-sm="column" fxLayoutGap="16px">
                 <mat-form-field fxFlex="50" appearance="standard">
                     <mat-label>Amortization Period Years</mat-label>
-                    <mat-select formControlName="periodYear">
-                        <mat-option *ngFor="let year of periodYears" [value]="year.value">{{ year.label }}</mat-option>
+                    <mat-select formControlName="amortizationYears">
+                        <mat-option *ngFor="let year of amortizationYearsOptions" [value]="year.value">{{ year.label }}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field fxFlex="50" appearance="standard">
-                    <mat-label>Amortization Period Months</mat-label>
-                    <mat-select formControlName="periodMonth">
-                        <mat-option *ngFor="let month of periodMonths" [value]="month.value">{{ month.label }}</mat-option>
+                    <mat-label>Term</mat-label>
+                    <mat-select formControlName="termYears">
+                        <mat-option *ngFor="let year of termYearsOptions" [value]="year.value">{{ year.label }}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -36,14 +36,7 @@
                 <mat-form-field fxFlex="50" appearance="standard">
                     <mat-label>Payment Frequency</mat-label>
                     <mat-select formControlName="frequency">
-                        <mat-option *ngFor="let f of frequency" [value]="f.value">{{ f.label }}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <br/>
-                <mat-form-field fxFlex="50" appearance="standard">
-                    <mat-label>Term</mat-label>
-                    <mat-select formControlName="termYears">
-                        <mat-option *ngFor="let year of termYears" [value]="year.value">{{ year.label }}</mat-option>
+                        <mat-option *ngFor="let f of frequencyOptions" [value]="f.value">{{ f.label }}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>

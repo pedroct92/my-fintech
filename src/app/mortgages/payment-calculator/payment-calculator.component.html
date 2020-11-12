@@ -7,11 +7,12 @@
         <img fxFlex="33.5" fxHide.lt-sm src="assets/img/house.jpeg" class="home-calculator" alt="House with keys">
         <app-payment-plan fxFlex="66.5"
             (calculate)="onPaymentPlanChange($event)"
-            (reset)="onPaymentPlanReset()">
+            (resetSummary)="onPaymentPlanReset()">
         </app-payment-plan>
     </div>
-    <div @inOutAnimation fxLayout="row" fxFlexFill fxLayout.lt-sm="column" fxLayoutGap="16px" *ngIf="result$ | async as result">
-        <app-payment-summary fxFlex="100">
+    <div @inOutAnimation fxLayout="row" fxFlexFill fxLayout.lt-sm="column" fxLayoutGap="16px" *ngIf="summary$ | async as result">
+        <app-payment-summary fxFlex="100"
+                             [summary]="result">
         </app-payment-summary>
     </div>
 </div>

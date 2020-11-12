@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { IFormBuilder, IFormGroup } from '@rxweb/types';
 import {
   makeFrequencyOptions,
-  makePeriodMonthsOptions,
-  makePeriodYearsOptions, makeTermYearsOptions,
+  makeAmortizationYearsOptions, makeTermYearsOptions,
   PaymentFrequency,
   PaymentPlan,
   SelectOption
@@ -15,49 +15,53 @@ import {
   styleUrls: ['./payment-plan.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PaymentPlanComponent implements OnInit {
+export class PaymentPlanComponent implements OnInit, AfterViewInit {
 
   @Output()
   calculate = new EventEmitter<PaymentPlan>();
 
   @Output()
-  reset = new EventEmitter<void>();
+  resetSummary = new EventEmitter<void>();
 
-  periodYears: Array<SelectOption<number>>;
-  periodMonths: Array<SelectOption<number>>;
-  termYears: Array<SelectOption<number>>;
-  frequency: Array<SelectOption<PaymentFrequency>>;
+  amortizationYearsOptions: Array<SelectOption<number>>;
+  termYearsOptions: Array<SelectOption<number>>;
+  frequencyOptions: Array<SelectOption<PaymentFrequency>>;
 
-  paymentPlanForm: FormGroup;
+  fb: IFormBuilder;
+  paymentPlanForm: IFormGroup<PaymentPlan>;
 
   constructor(
-      private fb: FormBuilder
-  ) { }
+     fb: FormBuilder
+  ) {
+    this.fb = fb;
+  }
 
   ngOnInit(): void {
-    this.periodYears = makePeriodYearsOptions();
-    this.periodMonths = makePeriodMonthsOptions();
-    this.termYears = makeTermYearsOptions();
-    this.frequency = makeFrequencyOptions();
+    this.amortizationYearsOptions = makeAmortizationYearsOptions();
+    this.termYearsOptions = makeTermYearsOptions();
+    this.frequencyOptions = makeFrequencyOptions();
     this.paymentPlanForm = this.buildForm();
   }
 
+  ngAfterViewInit(): void {
+    this.onCalculate(); // Emits a new calculation with the default params
+  }
+
   onCalculate(): void {
-    const paymentPlan = this.paymentPlanForm.value as PaymentPlan;
+    const paymentPlan: PaymentPlan = this.paymentPlanForm.value;
     this.calculate.emit(paymentPlan);
   }
 
   onReset(): void {
     this.paymentPlanForm = this.buildForm();
-    this.reset.emit();
+    this.resetSummary.emit();
   }
 
-  private buildForm(): FormGroup {
-    return this.fb.group({
-      amount: [100000, Validators.required],
+  private buildForm(): IFormGroup<PaymentPlan> {
+    return this.fb.group<PaymentPlan>({
+      principal: [100000, Validators.required],
       rate: [5, Validators.required],
-      periodYear: [25, Validators.required],
-      periodMonth: [],
+      amortizationYears: [25, Validators.required],
       frequency: ['MONTHLY', Validators.required],
       termYears: [5, Validators.required]
     });

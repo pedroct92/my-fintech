@@ -8,32 +8,32 @@ export interface SelectOption<T> {
 export type PaymentFrequency = 'ACCELERATED_WEEKLY' | 'WEEKLY' | 'ACCELERATED_BI_WEEKLY' | 'BI_WEEKLY'| 'SEMI_MONTHLY'| 'MONTHLY';
 
 export interface PaymentPlan {
-  amount: number;
+  principal: number;
   rate: number;
-  period: AmortizationPeriod;
+  amortizationYears: number;
   frequency: PaymentFrequency;
   termYears: number;
 }
 
-export interface AmortizationPeriod {
-  years: number;
-  months: number;
+export interface MortgageSection {
+  numPayments: number;
+  paidInterest: number;
+  paidPrincipal: number;
+  paidInTotal: number;
 }
 
-export function makePeriodYearsOptions(): Array<SelectOption<number>> {
+export interface MortgageSummary {
+  payment: number;
+  frequencyLabel: string;
+  firstTerm: MortgageSection;
+  allTerms: MortgageSection;
+}
+
+export function makeAmortizationYearsOptions(): Array<SelectOption<number>> {
   return makeNumberRange(30).map(i => {
     return {
       label: i === 0 ? '1 year' : `${i + 1} years`,
       value: i + 1
-    };
-  });
-}
-
-export function makePeriodMonthsOptions(): Array<SelectOption<number>>  {
-  return makeNumberRange(12).map(i => {
-    return {
-      label: i === 0 ? '' : i === 1 ? '1 month' : `${i} months`,
-      value: i
     };
   });
 }
@@ -56,4 +56,22 @@ export function makeFrequencyOptions(): Array<SelectOption<PaymentFrequency>> {
     { label: 'Semi-monthly (24x per year)', value: 'SEMI_MONTHLY' },
     { label: 'Monthly (12x per year)', value: 'MONTHLY' },
   ];
+}
+
+export function getFrequencyLabel(frequency: PaymentFrequency): string {
+  const opt = makeFrequencyOptions().find(v => v.value === frequency);
+  return opt?.label;
+}
+
+/*
+* For simplicity, accelerated and non-accelerated frequencies are returning the same amount of payments per year.
+* */
+export function numberOfPaymentsPerYear(frequency: PaymentFrequency): number {
+  switch (frequency) {
+    case 'WEEKLY' || 'ACCELERATED_WEEKLY': return 52;
+    case 'BI_WEEKLY' || 'ACCELERATED_BI_WEEKLY': return 26;
+    case 'SEMI_MONTHLY': return 24;
+    case 'MONTHLY': return 12;
+    default: throw new Error('Unsupported PaymentFrequency');
+  }
 }

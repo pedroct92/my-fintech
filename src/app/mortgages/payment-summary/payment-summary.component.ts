@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { MortgageSummary } from '@my-fintech/mortgages/mortgages.models';
 
 @Component({
   selector: 'app-payment-summary',
@@ -8,4 +9,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class PaymentSummaryComponent {
 
+  @Input()
+  summary: MortgageSummary;
 }

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { PaymentCalculatorService } from '@my-fintech/mortgages/payment-calculator/payment-calculator.service';
 import { Observable } from 'rxjs';
-import { PaymentPlan } from '@my-fintech/mortgages/mortgages.models';
+import { MortgageSummary, PaymentPlan } from '@my-fintech/mortgages/mortgages.models';
 import { enterLeaveAnimation } from '@my-fintech/commons/animations';
 
 @Component({
@@ -13,14 +13,14 @@ import { enterLeaveAnimation } from '@my-fintech/commons/animations';
 })
 export class PaymentCalculatorComponent implements OnInit {
 
-  result$: Observable<any>; // TODO def type
+  summary$: Observable<MortgageSummary>;
 
   constructor(
       private calculatorService: PaymentCalculatorService
   ){}
 
   ngOnInit(): void {
-    this.result$ = this.calculatorService.result$;
+    this.summary$ = this.calculatorService.summary$;
   }
 
   onPaymentPlanChange(paymentPlan: PaymentPlan): void {
