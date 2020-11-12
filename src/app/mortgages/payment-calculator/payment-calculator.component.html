@@ -10,9 +10,9 @@
             (resetSummary)="onPaymentPlanReset()">
         </app-payment-plan>
     </div>
-    <div @inOutAnimation fxLayout="row" fxFlexFill fxLayout.lt-sm="column" fxLayoutGap="16px" *ngIf="summary$ | async as result">
+    <div @inOutAnimation fxLayout="row" fxFlexFill fxLayout.lt-sm="column" fxLayoutGap="16px" *ngIf="summary">
         <app-payment-summary fxFlex="100"
-                             [summary]="result">
+             [summary]="summary">
         </app-payment-summary>
     </div>
 </div>

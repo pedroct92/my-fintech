@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { PaymentCalculatorService } from '@my-fintech/mortgages/payment-calculator/payment-calculator.service';
-import { Observable } from 'rxjs';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { calcMortgageSummary } from '@my-fintech/mortgages/payment-calculator/payment-calculator';
 import { MortgageSummary, PaymentPlan } from '@my-fintech/mortgages/mortgages.models';
 import { enterLeaveAnimation } from '@my-fintech/commons/animations';
 
@@ -11,23 +10,15 @@ import { enterLeaveAnimation } from '@my-fintech/commons/animations';
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [enterLeaveAnimation]
 })
-export class PaymentCalculatorComponent implements OnInit {
+export class PaymentCalculatorComponent {
 
-  summary$: Observable<MortgageSummary>;
-
-  constructor(
-      private calculatorService: PaymentCalculatorService
-  ){}
-
-  ngOnInit(): void {
-    this.summary$ = this.calculatorService.summary$;
-  }
+  summary: MortgageSummary;
 
   onPaymentPlanChange(paymentPlan: PaymentPlan): void {
-    this.calculatorService.calc(paymentPlan);
+    this.summary = calcMortgageSummary(paymentPlan);
   }
 
   onPaymentPlanReset(): void {
-    this.calculatorService.clear();
+    this.summary = undefined;
   }
 }
