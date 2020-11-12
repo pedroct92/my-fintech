@@ -1,3 +1,16 @@
 .actions {
   margin-top: 10px;
 }
+
+.hint-error {
+  color: var(--warn-color);
+  margin-bottom: 10px;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  display: none;
+}
+
+input {
+  -moz-appearance: textfield;
+}

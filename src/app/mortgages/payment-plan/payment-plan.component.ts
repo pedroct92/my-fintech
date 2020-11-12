@@ -8,6 +8,7 @@ import {
   PaymentPlan,
   SelectOption
 } from '@my-fintech/mortgages/mortgages.models';
+import { IAbstractControl } from '@rxweb/types/reactive-form/i-abstract-control';
 
 @Component({
   selector: 'app-payment-plan',
@@ -57,10 +58,18 @@ export class PaymentPlanComponent implements OnInit, AfterViewInit {
     this.resetSummary.emit();
   }
 
+  get principal(): IAbstractControl<PaymentPlan> {
+    return this.paymentPlanForm.get('principal');
+  }
+
+  get rate(): IAbstractControl<PaymentPlan> {
+    return this.paymentPlanForm.get('rate');
+  }
+
   private buildForm(): IFormGroup<PaymentPlan> {
     return this.fb.group<PaymentPlan>({
-      principal: [100000, Validators.required],
-      rate: [5, Validators.required],
+      principal: [100000, [Validators.required, Validators.min(1), Validators.max(100000000)]],
+      rate: [5, [Validators.required, Validators.min(0.01), Validators.max(100)]],
       amortizationYears: [25, Validators.required],
       frequency: ['MONTHLY', Validators.required],
       termYears: [5, Validators.required]

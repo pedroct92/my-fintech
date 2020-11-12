@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PaymentPlanComponent } from './payment-plan.component';
 import { MortgagesModule } from '@my-fintech/mortgages/mortgages.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxMaskModule } from 'ngx-mask';
 
 describe('PaymentPlanComponent', () => {
   let component: PaymentPlanComponent;
@@ -9,7 +10,7 @@ describe('PaymentPlanComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, MortgagesModule]
+      imports: [NoopAnimationsModule, NgxMaskModule.forRoot(), MortgagesModule]
     })
     .compileComponents();
   });
