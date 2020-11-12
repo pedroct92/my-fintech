@@ -17,6 +17,9 @@
       "dom"
     ],
     "types" : ["node"],
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
     "paths": {
       "@my-fintech/*": [
         "src/app/*"
