@@ -23,14 +23,17 @@ export class PaymentCalculatorService {
     const allTermsNumPayments = paymentsPerYear * plan.amortizationYears;
     const interest = plan.rate / 100 / paymentsPerYear;
     const payment = plan.principal * interest / (1 - (Math.pow(1 + interest, - allTermsNumPayments)));
+    const balance = payment / interest * (1 - (1 / Math.pow( 1 + interest, allTermsNumPayments - (paymentsPerYear * plan.termYears))));
+    const totalPaymentsTerm = payment * plan.termYears * paymentsPerYear;
+    const principalBalanceTerm = plan.principal - balance;
 
     const summary: MortgageSummary = {
       payment,
       frequencyLabel: getFrequencyLabel(plan.frequency),
       firstTerm: {
         numPayments: paymentsPerYear * plan.termYears,
-        paidInterest: 0, // TODO
-        paidPrincipal: 0, // TODO
+        paidInterest: totalPaymentsTerm - principalBalanceTerm,
+        paidPrincipal: principalBalanceTerm,
         paidInTotal: payment * plan.termYears * paymentsPerYear
       },
       allTerms: {
